@@ -1,11 +1,10 @@
-#投稿者の名前、画像の投稿
 require 'sinatra'
 require 'sinatra/reloader'
 require 'active_record'
 
 ActiveRecord::Base.establish_connection(
   "adapter" => "sqlite3",
-  "database" => "./bbs.db"
+  "database" => "bbs.db"
 )
 
 helpers do
@@ -22,7 +21,7 @@ get '/' do
 end
 
 post '/new' do
-  Comment.create({:body => params[:body]})
+  Comment.create({:body => params[:body],:name => params[:name]})
   redirect '/'
 end
 

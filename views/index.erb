@@ -7,16 +7,20 @@
 <body>
   <h1>BBS</h1>
   <ul>
-    <% @comments.each do |comment|%>
-    <li data-id="<%= comment.id %>">
-      <%= h comment.body %>
-      <span class="deleteCmd" style="cursor:pointer;color:blue">[x]</span>
-    </li>
-    <%end%>
-  </ul>
+      <B>comments ( name ) [del]</B>
+      <% @comments.each do |comment|%>
+      <li data-id="<%= comment.id %>">
+        <%= h comment.body %> (
+        <%= h comment.name %> )
+          <span class="deleteCmd" style="cursor:pointer;color:blue">[x]</span>
+       </li>
+      <%end%>
+   </ul>
   <h2>Add New</h2>
   <form method="post" action="/new">
-    <input type="text" name="body"><input type="submit" value="post!">
+    comment: <input type="text" name="body">
+    name   : <input type="text" name="name">
+    <input type="submit" value="post!">
   </form>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
